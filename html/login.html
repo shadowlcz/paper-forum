@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>Login</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/language.css">
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/language.js"></script>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    <script type="text/javascript" src="../assets/js/login-empty.js"></script>
+</head>
+<body>
+<!-- Pre loader -->
+{{template "translate.html".}}
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+<!-- Header -->
+    {{ template "navbar.html" .}}
+<div class="light b-t">
+    <div id="primary" class="content-area"
+         data-bg-possition="center"
+         data-bg-repeat="false"
+         style="background: url('../assets/img/icon/icon-circles.png');">
+        <main id="main" class="site-main">
+            <div class="container">
+                <div class="col-xl-8 mx-lg-auto p-t-b-80">
+                        <header class="text-center">
+                            {{ if .ErrorTitle}}
+                                <p class="bg-warning">
+                                    {{.ErrorTitle}}: {{.ErrorMessage}}
+                                </p>
+                            {{end}}
+                            <h1 class="welcome" ></h1>
+                            <p class="section-subtitle welcome0"></p>
+                            <img class="p-t-b-50" src="../assets/img/icon/icon-login.png" alt="">
+                        </header>
+                        <form accept-charset="UTF-8" name = "login" role="form" action="/u/login" method="POST" onsubmit="return check(this)">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group has-icon"><i class="icon-laptop_mac"></i>
+                                        <input type="text" class="form-control form-control-lg" id="username" name="username"
+                                               placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                        <input type="password" class="form-control form-control-lg" id="password" name="password"
+                                               placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Let me enter">
+                                </div>
+                            </div>
+                        </form>
+                        <div >
+                            <a class="goregister"  href="/u/register">Still not got an account yet ? Get one~</a>
+                        </div>
+                </div>
+            </div>
+        </main>
+        <!-- #main -->
+    </div>
+    <!-- #primary -->
+</div>
+
+    {{template "footer.html"}}
+<!-- Login modal -->
+
+</div>
+<!--End Page page_wrrapper -->
+</body>
+</html>

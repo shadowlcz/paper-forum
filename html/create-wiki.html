@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>Create New Wiki</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/language.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/js/language.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../assets/js/tinymce/tinymce.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../assets/js/tinymce/jquery.tinymce.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../assets/js/richtexteditor.js"></script>
+</head>
+<body>
+{{template "translate.html".}}
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+    <main class="single single-knowledgebase">
+        <!-- Header -->
+        {{template "navbar0.html".}}
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a class="home-l" href="/">Home</a>
+                    </li>
+                    <li><a class="wiki-l" href="/wiki">Wiki List</a>
+                    </li>
+                    <li class="active newwiki-l">Create New</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="col-lg-10 mx-md-auto ">
+
+                    <form class="form" action="/wiki/create" method="POST">
+
+                        <div class="form-group">
+                            <label class="title-l" for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                        </div>
+                        <!--text comment-->
+                        <div class="form-group">
+                            <label class="label-l" for="summary">Tags</label>
+                            <textarea name = "tags" class="form-control" rows ="3" id = "tags" placeholder="Tag"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="summary-l" for="summary">Summary</label>
+                            <textarea name = "summary" class="form-control" rows ="3" id = "summary" placeholder="Summary"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="content-l" for="content">Content</label>
+                            <textarea name = "content" id="content"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-l">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    {{template "footer0.html".}}
+    <!-- Login modal -->
+    <!-- SignUp modal -->
+</div>
+<!--End Page page_wrrapper -->
+</body>
+</html>

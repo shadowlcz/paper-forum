@@ -1,0 +1,81 @@
+<nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+                        <i></i>
+        </a>
+
+        <a class="navbar-brand" href="/">
+            <img class="d-inline-block align-top" alt="" src="../assets/img/basic/logopaper.png">
+        </a>
+
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                <ul class="dl-menu align-items-center">
+                    <li><a class="home-l" href="/">Home</a></li>
+
+
+
+                    <li class="parent postnav"><a class="posts-l" href="#">Posts</a>
+                        <ul class="lg-submenu">
+                            <li ><a class="postlist-l" href="/post">Post List</a>
+                                {{ if .is_logged_in }}
+                            <li ><a class="newpost-l" href="/post/create">Post New Question </a>
+                            {{end}}
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="parent wikinav"><a class="wiki-l" href="#">Wiki</a>
+                        <ul class="lg-submenu" style="width: 300px">
+                            <li class="p-0">
+                                <div class="p-4">
+                                    <div class="my-3">
+                                        <a href="/wiki">
+                                            <div class="media">
+                                                <i class="icon-circle-o w-20 s-36 text-primary"></i>
+                                                <div class="media-body">
+                                                    <span class="mt-0 mb-0 font-weight-normal s-12 wikilist-l">Wiki List<br></span><br>
+                                                    <span class="s-12 wikilayout-l">Wiki Layout</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {{ if .is_logged_in }}
+                                    <div class="my-3">
+                                        <a href="/wiki/create">
+                                            <div class="media">
+                                                <i class="icon-circle-o w-20 s-36 text-warning"></i>
+                                                <div class="media-body">
+                                                    <span class="mt-0 mb-0 font-weight-normal s-12 newwiki-l">New Wiki<br></span><br>
+                                                    <span class="s-12 creatwiki-l">Wiki Details Page</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {{end}}
+
+                                </div>
+
+                            </li>
+                        </ul>
+                    </li>
+                    {{ if not .is_logged_in }}
+                        <li><a class="login-l" href="/u/login">
+                                Login
+                            </a>
+                        </li>
+                        <li><a href="/u/register" class="btn btn-default nav-btn sign-l">Sign
+                                Up</a>
+                        </li>
+                    {{end}}
+                    {{ if .is_logged_in }}
+                        <li><a href="u/logout" class="btn btn-primary nav-btn logout-l">Logout</a></li>
+{{/*                        <li><a class="logout-l" href="/u/logout">Logout</a></li>*/}}
+                    {{end}}
+                </ul>
+            </div>
+            <!-- Login modal -->
+        </div>
+    </div>
+</nav>

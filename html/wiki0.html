@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>{{.payload.Title}}</title>
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/js/language.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/language.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
+</head>
+<body>
+{{template "translate0.html".}}
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+    <main class="single single-knowledgebase">
+        <!-- Header -->
+        {{template "navbar0.html".}}
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a class="home-l" href="/">Home</a>
+                    </li>
+                    <li><a class="wikilist-l" href="/wiki">Wiki List</a>
+                    </li>
+                    <li class="active">{{.payload.Title}}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="col-lg-10 mx-md-auto ">
+
+                    <div id="post">
+                        <div v-html="message"></div>
+                    </div>
+                    <script>
+                        new Vue({
+                            el: '#post',
+                            data: {
+                                message: '{{.payload.Content}}'
+                            }
+                        })
+                    </script>
+
+                </div>
+            </div>
+            <div class="feedback">
+                <div class="container">
+                    <div class="col-lg-8 mx-md-auto">
+                        <center> <p><span class="count">If you wanna get involve to the community, please log in first.</span>
+                            </p><center>
+                    </div>
+                </div>
+            </div>
+            <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+            {{ if .is_logged_in }}
+                <center><div class="col-lg-8" id="disqus_thread"></div></center>
+                <script>
+
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://shadowqna.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            {{end}}
+        </div>
+
+    </main>
+    {{template "footer0.html".}}
+    <!-- Login modal -->
+    <!-- SignUp modal -->
+</div>
+<!--End Page page_wrrapper -->
+</body>
+</html>

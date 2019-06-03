@@ -1,0 +1,73 @@
+<nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <i></i>
+        </a>
+
+        <a class="navbar-brand" href="/">
+            <img class="d-inline-block align-top" alt="" src="../assets/img/basic/logo1.png">
+        </a>
+
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                <ul class="dl-menu align-items-center">
+                    <li><a href="/">Home</a></li>
+                    <li class="parent"><a href="#">Posts</a>
+                        <ul class="lg-submenu">
+                            <li><a href="/post">Post List</a>
+                                {{ if .is_logged_in }}
+                            <li><a href="/post/create">Post New Question </a>
+                                {{end}}
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="parent"><a href="#">Wiki</a>
+                        <ul class="lg-submenu" style="width: 300px">
+                            <li class="p-0">
+                                <div class="p-4">
+                                    <div class="my-3">
+                                        <a href="/wiki">
+                                            <div class="media">
+                                                <i class="icon-circle-o w-20 s-36 text-primary"></i>
+                                                <div class="media-body">
+                                                    <span class="mt-0 mb-0 font-weight-normal s-12">Wiki List<br></span>
+                                                    <span class="s-12">Wiki Layout</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="my-3">
+                                        <a href="/wiki/create">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    {{ if .is_logged_in }}
+                                                        <i class="icon-circle-o w-20 s-36 text-warning"></i>
+                                                    <span class="mt-0 mb-0 font-weight-normal s-12">New Wiki<br></span>
+                                                    {{end}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    {{ if not .is_logged_in }}
+                    <li><a href="/u/login">
+                            Login
+                        </a>
+                    </li>
+                    <li><a href="/u/register" class="btn btn-default nav-btn">Sign
+                            Up</a>
+                    </li>
+                    {{end}}
+                    {{ if .is_logged_in }}
+                        <li><a href="/u/logout">Logout</a></li>
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Q&A wiki">
+    <meta name="author" content="MCI team09">
+    <link rel="icon" href="../assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>Wiki List</title>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/language.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/language.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
+</head>
+<body>
+{{template "translate.html".}}
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+    <div class="blog">
+
+        {{ template "navbar.html" .}}
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a class="home-l" href="/"></a>
+                    </li>
+                    <li class="active wiki-l">W</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="content-wrapper">
+            <div class="container">
+                <header class="section-heading p-b-40">
+                    <h1 class="text-left wiki-l"></h1>
+                    <p class="text-left wiki-l0"></p>
+                </header>
+
+
+                <div class="row">
+                    {{range .payload}}
+                        <div class="col-lg-4">
+                            <span  class="icon-tags2">{{.Tags}}</span>
+                            <article class="post"><span class="ico icon-document-text2"></span>
+                                <h2><a href="/wiki/view/{{.Wikiid}}">{{.Summary}}</a></h2>
+                                <a class="readmore" href="/wiki/view/{{.Wikiid}}">Read More</a>
+                            </article>
+                        </div>
+                    {{end}}
+                </div>
+
+
+            </div>
+        </main>
+    </div>
+    {{template "footer.html".}}
+</div>
+<!--End Page page_wrrapper -->
+</body>
+</html>

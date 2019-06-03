@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>Paper</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+    <main class="template-genre">
+        <!-- Search Section & Nav -->
+        <div class="search-section home-search">
+            <!-- Header -->
+            <nav class="mainnav navbar navbar-default justify-content-between">
+                <div class="container relative">
+                    <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+                       aria-expanded="false" aria-label="Toggle navigation">
+                        <i></i>
+                    </a>
+
+                    <a class="navbar-brand" href="/">
+                        <img class="d-inline-block align-top" alt="" src="../assets/img/basic/logo.png">
+                    </a>
+
+                    <div class="paper_menu">
+                        <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                            <ul class="dl-menu align-items-center">
+                                <li><a href="/">Home</a></li>
+
+                                <li class="parent"><a href="#">Posts</a>
+                                    <ul class="lg-submenu">
+                                        <li><a href="/post">Post List</a>
+                                        <li><a href="/post/create">Post New Question </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="parent"><a href="#">Wiki</a>
+                                    <ul class="lg-submenu" style="width: 300px">
+                                        <li class="p-0">
+                                            <div class="p-4">
+                                                <div class="my-3">
+                                                    <a href="/wiki">
+                                                        <div class="media">
+                                                            <i class="icon-circle-o w-20 s-36 text-primary"></i>
+                                                            <div class="media-body">
+                                                                <span class="mt-0 mb-0 font-weight-normal s-12">Wiki List<br></span>
+                                                                <span class="s-12">Wiki Layout</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="my-3">
+                                                    <a href="/wiki/create">
+                                                        <div class="media">
+                                                            <i class="icon-circle-o w-20 s-36 text-warning"></i>
+                                                            <div class="media-body">
+                                                                <span class="mt-0 mb-0 font-weight-normal s-12">New Wiki<br></span>
+                                                                <span class="s-12">Wiki Details Page</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="/u/login">
+                                        Login
+                                    </a>
+                                </li>
+                                <li><a href="/u/register" class="btn btn-default nav-btn">Sign
+                                        Up</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Login modal -->
+                    </div>
+                </div>
+            </nav>
+            <div class="masthead text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-md-auto">
+                            <h1>Hi, how can we help you?</h1>
+                            <form>
+                                <input type="text" class="search-field" placeholder="Search Something ... ">
+                                <button type="submit"><i class="icon icon-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Genre -->
+        <script type="text/javascript">
+
+            function settimeout2(s, obj){
+                var n=0
+                if(s != undefined)
+                {
+                    n=s;
+                }
+                var timer = setInterval(function(obj){
+                    $(".settimeout").html(n);
+                    n--;
+                    if(0==n){
+                        self.location.href="/post/view/{{.payload.Postid}}";
+                        clearInterval(timer);
+                        return;
+                    }
+                },1000);
+            }
+
+        </script>
+        <br/>
+        <div class="container">
+            <div class="'row">
+                <div class="col-md-12 col-md-offset-12">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <center><h2 class="panel-title">Submission success</h2></center>
+                        </div>
+
+                        <div class="panel-body">
+                            <fieldset>
+                                <center> <p >System will redirect to homepage in <i class="settimeout">3</i> seconds，if not, please click <a class="jump" href="/post/view/{{.payload.Postid}}">jump.</a></p><center>
+                                        <script type="text/javascript">settimeout2('2','.settimeout')</script>
+                            </fieldset>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Call To Action -->
+        <section class="section">
+            <div class="container">
+                <div class="row call-to-action  paper-block">
+
+                    <div class="col-xl-9">
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{template "footer.html"}}
+</div>
+<!--End Page page_wrrapper -->
+<script src="../assets/js/app.js"></script>
+
+</body>
+</html>
